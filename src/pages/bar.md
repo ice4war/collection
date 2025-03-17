@@ -37,10 +37,13 @@ const stackData = stack.columns.slice(1).flatMap(age=>stack.map(d=>({state:d.nam
 
 # Bar charts
 [Back to Home](/)
+
+
+
 <div class="barcharts">
 	<div class='card'>
 		<p>World Timeline</p>
-		${Timeline(timeline).size([1000, 800])()}
+		${Timeline(timeline).size([600, 800])()}
 	</div>
 	<div class='card'>
 		<p>Radial</p>
