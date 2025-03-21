@@ -10,8 +10,7 @@
   },
   "dependencies": {
     "@observablehq/framework": "^1.13.0",
-    "axios": "^1.7.9",
-    "three": "^0.172.0"
+    "axios": "^1.7.9"
   },
   "devDependencies": {
     "rimraf": "^5.0.5"

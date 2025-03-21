@@ -7,6 +7,7 @@ toc: false
 
 - [Bar Charts](/pages/bar)
 - [Line Charts](/pages/line)
+- [Area Charts](/pages/area)
 <br>
 
 work in progress

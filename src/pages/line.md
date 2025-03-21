@@ -3,14 +3,13 @@ title: Line Chart
 theme: dashboard
 ---
 
-
 ```js
 const aapl = FileAttachment('../data/line/aapl.csv').csv({"typed":true})
 const bitcoin = FileAttachment('../data/line/bitcoin.csv').csv({"typed":true})
 const multi = FileAttachment('../data/line/bls-metro-unemployment.csv').csv({"typed":true})
 const gdp = FileAttachment('../data/line/government-receipts-of-gdp.csv').csv({"typed":true})
 const cancer = FileAttachment('../data/line/cancer.csv').csv({"typed":true});
-const schedule = FileAttachment('../data/line/schedule.tsv').tsv({"typed":true});
+const cars = FileAttachment('../data/line/cars.csv').csv({"typed":true});
 
 ```
 
@@ -20,11 +19,13 @@ import {lineChart} from '../components/line/line.js';
 import {multiLine} from '../components/line/multiline.js';
 import {slopeLine} from '../components/line/slope.js';
 import {candleChart} from '../components/line/candle.js';
+import {parallelChart} from '../components/line/parallel.js';
 // const inter = d3.interpolateRgbBasis([ '#615043','#987155', '#B89675', '#69879A', '#3C92A8'])
+
 ```
 # Line Charts
-
 [Back to Home](/)
+
 <div class="linecharts">
 <div class="card">
 	<p>Brushable Line</p>
@@ -35,12 +36,16 @@ import {candleChart} from '../components/line/candle.js';
 		${multiLine(multi)()}
 	</div>
 	<div class="card">
+		<p>Candle stick for Stock volume</p>
+		${candleChart(bitcoin).size([700,400])()}
+	</div>
+	<div class="card">
 		<p>Slope chart highlights on hover</p>
 		${slopeLine(cancer).size([700,950])()}
 	</div>
 	<div class="card">
-		<p>Candle stick for Stock volume</p>
-		${candleChart(bitcoin).size([700,400])()}
+		<p>Parallel Lines</p>
+		${parallelChart(cars).size([900,800])()}
 	</div>
 </div>
 
@@ -55,4 +60,5 @@ import {candleChart} from '../components/line/candle.js';
 			margin-right: 1em;
 			height: fit-content;
 		}
+
 </style>
