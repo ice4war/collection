@@ -1,5 +1,5 @@
-import * as d3 from "npm:d3";
-
+// import * as d3 from "npm:d3";
+import * as d3 from 'd3';
 export function radialArea(input, id = "radialArea") {
   let width = 700;
   let height = width;
@@ -27,7 +27,7 @@ export function radialArea(input, id = "radialArea") {
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.bottom + margin.top)
       .append("g")
-      .attr("transform", `translate(${margin.left + width/2},${margin.top+ height/2})`);
+      .attr("transform", `translate(${margin.left + width / 2},${margin.top + height / 2})`);
     // const formatMonth = d3.utcFormat("%B")
     // const data = input.map(d => {
     //   return {
@@ -48,11 +48,11 @@ export function radialArea(input, id = "radialArea") {
     const outerRadius = width / 2;
 
     const data = d3.groups(
-        input,
-        ({
-          DATE
-        }) => new Date(Date.UTC(2000, DATE.getUTCMonth(), DATE.getUTCDate())), // group by day of year
-      ).sort(([a], [b]) => d3.ascending(a, b))
+      input,
+      ({
+        DATE
+      }) => new Date(Date.UTC(2000, DATE.getUTCMonth(), DATE.getUTCDate())), // group by day of year
+    ).sort(([a], [b]) => d3.ascending(a, b))
       .map(([date, v]) => ({
         date,
         avg: d3.mean(v, d => d.TAVG),
@@ -110,7 +110,7 @@ export function radialArea(input, id = "radialArea") {
         .attr('stroke', '#000')
         .attr('stroke-opacity', .4)
         .attr('d', d => `
-          M${d3.pointRadial(x(d),innerRadius)}
+          M${d3.pointRadial(x(d), innerRadius)}
           L${d3.pointRadial(x(d), outerRadius)}
         `))
       .call(g => g.append('path')
@@ -118,8 +118,8 @@ export function radialArea(input, id = "radialArea") {
         .datum(d => [d, d3.utcMonth.offset(d)])
         .attr('fill', 'none')
         .attr('d', ([a, b]) => `
-          M${d3.pointRadial(x(a),innerRadius)}
-          A${innerRadius},${innerRadius} 0,0,1 ${d3.pointRadial(x(b),innerRadius)}
+          M${d3.pointRadial(x(a), innerRadius)}
+          A${innerRadius},${innerRadius} 0,0,1 ${d3.pointRadial(x(b), innerRadius)}
         `))
       .call(g => g.append('text')
         .append('textPath')
@@ -144,7 +144,7 @@ export function radialArea(input, id = "radialArea") {
         .attr('stroke-width', 5)
         .attr('paint-order', 'stroke')
         .attr('y', d => -y(d))
-        .attr('dy','.3em')
+        .attr('dy', '.3em')
         .text(d => d)
         .clone(true)
         .attr('y', (d) => y(d)))
@@ -152,7 +152,7 @@ export function radialArea(input, id = "radialArea") {
     return container.node();
   }
 
-  chart.size = function([w, h]) {
+  chart.size = function ([w, h]) {
     if (!arguments.length) return width;
     width = w;
     height = h;

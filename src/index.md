@@ -8,6 +8,7 @@ toc: false
 - [Bar Charts](/pages/bar)
 - [Line Charts](/pages/line)
 - [Area Charts](/pages/area)
+- [scatter Charts](/pages/scatter)
 <br>
 
 work in progress
