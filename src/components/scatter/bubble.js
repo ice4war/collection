@@ -24,6 +24,7 @@ export function bubbleChart(input, id = "bubble") {
       .append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.bottom + margin.top)
+      .attr("style", "font-size:10px;")
       .append("g")
       .attr("transform", `translate(${margin.left},${margin.top})`);
 
@@ -52,8 +53,31 @@ export function bubbleChart(input, id = "bubble") {
       .attr("stroke-width", 2)
       .attr("stroke-opacity", 0.8)
       .attr("fill", (d) => color(group(d.data)))
-      .attr("fill-opacity", 0.5)
-      .call((g) => g.append("text").text((d) => d.data.id));
+      .attr("fill-opacity", 0.5);
+    const textData = (d) =>
+      d.id
+        .split(".")
+        .pop()
+        .split(/(?=[A-Z][a-z])|\s+/g);
+
+    const text = node
+      .filter((d) => d.r >= 19)
+      .append("text")
+      .attr("clip-path", (d) => `circle${d.r}`)
+      .attr("text-anchor", "middle");
+
+    text
+      .selectAll()
+      .data((d) => textData(d.data))
+      .join("tspan")
+      .attr("x", 0)
+      .attr("y", (d, i, nodes) => `${i - nodes.length / 2 + 0.35}em`)
+      .text((d) => d);
+    text.append('tspan')
+      .attr("x", 0)
+      .attr("y", d => `${textData(d.data).length / 2 + 0.35}em`)
+      .attr("fill-opacity", 0.7)
+      .text(d => d.data.value)
 
     return container.node();
   }

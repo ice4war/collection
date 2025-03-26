@@ -9,6 +9,8 @@ toc: false
 - [Line Charts](/pages/line)
 - [Area Charts](/pages/area)
 - [scatter Charts](/pages/scatter)
+- [Radial Charts](/pages/radial)
+- [Network Charts](/pages/network)
 <br>
 
 work in progress
